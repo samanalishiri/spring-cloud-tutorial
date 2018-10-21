@@ -1,2 +1,2 @@
-mvn clean install springboot:run
+mvn clean install spring-boot:run
 http://localhost:8761/
