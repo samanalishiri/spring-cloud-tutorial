@@ -1,0 +1,4 @@
+#service ID
+spring:
+  application:
+    name: eureka
