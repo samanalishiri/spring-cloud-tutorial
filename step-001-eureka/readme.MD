@@ -2,7 +2,7 @@
 When a client registers with Eureka, it provides meta-data about itself — such as host, port, health indicator URL, home page, and other details. Eureka receives heartbeat messages from each instance belonging to a service. If the heartbeat fails over a configurable timetable, the instance is normally removed from the registry.
     
 ### step one: ssl certificate
-open command prompt in resources directory. run follow command
+open command prompt in resources directory. run follow command:
 
     keytool -genkey -alias eureka -keyalg RSA -keystore eureka.jks -dname "CN=Saman Alishiri, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -storepass 123456 -keypass 123456
     keytool -genkey -alias client -keyalg RSA -keystore client.jks -dname "CN=Saman Alishiri, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -storepass 123456 -keypass 123456
