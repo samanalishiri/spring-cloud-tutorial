@@ -1,0 +1,11 @@
+keytool -genkey -alias eureka -keyalg RSA -keystore eureka.jks -dname "CN=Saman Alishiri, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -storepass 123456 -keypass 123456
+keytool -genkey -alias client -keyalg RSA -keystore client.jks -dname "CN=Saman Alishiri, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -storepass 123456 -keypass 123456
+
+keytool -export -alias eureka -file eureka.crt -keystore eureka.jks -storepass 123456
+keytool -export -alias client -file client.crt -keystore client.jks -storepass 123456
+
+keytool -import -alias client -file client.crt -keystore eureka.jks -storepass 123456
+keytool -import -alias eureka -file eureka.crt -keystore client.jks -storepass 123456
+
+keytool -importkeystore -srckeystore client.jks -destkeystore client.p12 -srcstoretype JKS -deststoretype PKCS12 -srcstorepass 123456 -deststorepass 123456 -srcalias client -destalias client -srckeypass 123456 -destkeypass 123456 -noprompt
+
