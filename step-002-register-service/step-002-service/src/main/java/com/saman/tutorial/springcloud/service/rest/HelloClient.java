@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import static java.lang.System.*;
 
 @Component
-public class HelloServiceClient implements CommandLineRunner {
+public class HelloClient implements CommandLineRunner {
 
     @Autowired
     private DiscoveryClient client;

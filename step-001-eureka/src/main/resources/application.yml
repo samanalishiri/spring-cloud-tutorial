@@ -1,9 +1,13 @@
 spring:
   main:
     banner-mode: 'off'
+#  security:
+#    user:
+#      name: admin
+#      password: admin
 
 server:
-  port: 8761
+  port: 443
   ssl:
     enabled: true
     key-store: classpath:eureka.jks
@@ -28,5 +32,7 @@ eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
+    service-url:
+      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0
