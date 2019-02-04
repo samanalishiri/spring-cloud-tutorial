@@ -3,7 +3,7 @@
     run step-002-service
 
 ###eureka server
-    monitor: http://localhost:8761
+    monitor: https://localhost:443
 
 ###actuator
     http://localhost:9090/monitoring/info

@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloService {
+public class HelloRestService {
 
-    @RequestMapping("step002/hello")
+    @RequestMapping(value = {"/", "service/hello"})
     public String hello(){
         return "Hello";
     }

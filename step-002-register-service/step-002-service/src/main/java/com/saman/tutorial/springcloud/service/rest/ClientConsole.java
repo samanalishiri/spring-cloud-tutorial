@@ -6,10 +6,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Component;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
+
 
 @Component
-public class HelloClient implements CommandLineRunner {
+public class ClientConsole implements CommandLineRunner {
 
     @Autowired
     private DiscoveryClient client;
@@ -20,14 +21,13 @@ public class HelloClient implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         out.println("services : ");
-        client.getServices().stream().forEach(out::println);
-        out.println("---------------------------------------------");
+        client.getServices().stream()
+                .forEach(out::println);
 
         out.println("application : ");
         eurekaClient.getApplications()
                 .getRegisteredApplications()
                 .stream()
                 .forEach(application -> out.println(application.getName()));
-        out.println("---------------------------------------------");
     }
 }

@@ -23,7 +23,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/**", "/eureka", "/admin/info").authenticated()
+                .antMatchers("/", "/**", "/admin/info").authenticated()
                 .and()
                 .requiresChannel()
                 .anyRequest().requiresSecure()

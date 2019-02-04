@@ -1,0 +1,51 @@
+spring:
+  main:
+    banner-mode: 'off'
+  security:
+    require-ssl: true
+
+server:
+  port: 9090
+  ssl:
+    enabled: false
+    key-store: classpath:client.jks
+    key-store-password: 123456
+    key-password: 123456
+    trust-store: classpath:client.jks
+    trust-store-password: 123456
+    key-alias: client
+
+eureka:
+  instance:
+    hostname: localhost
+    securePort: ${server.port}
+    securePortEnabled: true
+    nonSecurePortEnabled: false
+    homePageUrl: https://${eureka.instance.hostname}:${server.port}
+    statusPageUrl: https://${eureka.instance.hostname}:${server.port}/info
+    healthCheckUrl: https://${eureka.instance.hostname}:${server.port}/health
+  client:
+    securePortEnabled: true
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: https://admin:admin@${eureka.instance.hostname}:443/eureka/
+
+#management:
+#  endpoints:
+#    web:
+#      base-path: /monitoring
+#      exposure:
+#        include: *
+#    health:
+#      show-details: always
+#  server:
+#    port: 9090
+#
+#info:
+#  app:
+#    encoding: UTF-8
+#    java:
+#      source: 1:8
+#      target: 1:8
+#    motd: hello service

@@ -16,7 +16,7 @@ server:
     trust-store: classpath:eureka.jks
     trust-store-password: 123456
     key-alias: eureka
-
+    client-auth: 'want'
 eureka:
   instance:
     hostname: localhost
