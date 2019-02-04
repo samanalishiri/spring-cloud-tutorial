@@ -19,4 +19,4 @@ open command prompt in resources directory. run follow command: [Trust this cert
     mvn clean install spring-boot:run
 
 ### step three: eureka server
-    monitor: https://localhost:8761
+    monitor: https://localhost:443/
