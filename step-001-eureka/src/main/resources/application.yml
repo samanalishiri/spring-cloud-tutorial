@@ -21,7 +21,7 @@ server:
 eureka:
   instance:
     hostname: GF-35436
-    home-page-url: https://${eureka.instance.hostname}:${server.port}/
+    home-page-url: https://${eureka.instance.hostname}:${server.port}
     status-page-url: https://${eureka.instance.hostname}:${server.port}/admin/info
     secure-port-enabled: true
     non-secure-port-enabled: false
@@ -33,4 +33,28 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: https://gf-35436:8761/eureka/
+    healthcheck:
+      enabled: true
 
+
+management:
+  endpoints:
+    web:
+      base-path: /admin
+      exposure:
+        include: '*'
+    health:
+      show-details: always
+  server:
+    port: 8761
+  endpoint:
+    health:
+      enabled: true
+
+info:
+  app:
+    encoding: UTF-8
+    java:
+      source: 1:8
+      target: 1:8
+    motd: eureka server
