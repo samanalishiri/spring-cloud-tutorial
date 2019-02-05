@@ -1,8 +1,6 @@
 spring:
   main:
     banner-mode: 'off'
-  security:
-    require-ssl: true
 
 server:
   port: 9090
@@ -17,20 +15,18 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
-    securePort: ${server.port}
-    securePortEnabled: true
-    nonSecurePortEnabled: false
-    homePageUrl: https://${eureka.instance.hostname}:${server.port}
-    statusPageUrl: https://${eureka.instance.hostname}:${server.port}/info
-    healthCheckUrl: https://${eureka.instance.hostname}:${server.port}/health
+    hostname: GF-35436
+    status-page-url: https://${eureka.instance.hostname}:${server.port}/info
+    home-page-url: https://${eureka.instance.hostname}:${server.port}
+    health-check-url: https://${eureka.instance.hostname}:${server.port}/health
+    secure-port-enabled: true
+    non-secure-port-enabled: false
+    non-secure-port: ${server.port}
   client:
-    securePortEnabled: true
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: https://admin:admin@${eureka.instance.hostname}:443/eureka/
-
+      defaultZone: https://gf-35436:8761/eureka/
 #management:
 #  endpoints:
 #    web:

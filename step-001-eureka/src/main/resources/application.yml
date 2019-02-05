@@ -7,7 +7,7 @@ spring:
 #      password: admin
 
 server:
-  port: 443
+  port: 8761
   ssl:
     enabled: true
     key-store: classpath:eureka.jks
@@ -17,22 +17,20 @@ server:
     trust-store-password: 123456
     key-alias: eureka
     client-auth: 'want'
+
 eureka:
   instance:
-    hostname: localhost
-    securePort: ${server.port}
-    securePortEnabled: true
-    nonSecurePortEnabled: false
-    secureVirtualHostName: ${spring.application.name}
-    homePageUrl: https://${eureka.instance.hostname}:${server.port}/
-    statusPageUrl: https://${eureka.instance.hostname}:${server.port}/admin/info
-    metadataMap:
-      hostname: ${eureka.instance.hostname}
-      securePort: ${server.port}
+    hostname: GF-35436
+    home-page-url: https://${eureka.instance.hostname}:${server.port}/
+    status-page-url: https://${eureka.instance.hostname}:${server.port}/admin/info
+    secure-port-enabled: true
+    non-secure-port-enabled: false
+    secure-virtual-host-name: ${spring.application.name}
+    non-secure-port: ${server.port}
+    secure-port: 443
   client:
     registerWithEureka: false
     fetchRegistry: false
-    service-url:
-      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
+    serviceUrl:
+      defaultZone: https://gf-35436:8761/eureka/
+

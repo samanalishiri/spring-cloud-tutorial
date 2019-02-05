@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 
 @EnableEurekaClient
@@ -18,15 +19,17 @@ public class ServiceApplication {
     }
 
     @Bean
-    public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() throws NoSuchAlgorithmException {
+    public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() {
+        URL resource = ServiceApplication.class.getResource("/client.jks");
+
         DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
-        System.setProperty("javax.net.ssl.keyStore", "src/main/resources/client.jks");
+        System.setProperty("javax.net.ssl.keyStore", resource.getPath());
         System.setProperty("javax.net.ssl.keyStorePassword", "123456");
         System.setProperty("javax.net.ssl.keyPassword", "123456");
-        System.setProperty("javax.net.ssl.trustStore", "src/main/resources/client.jks");
+        System.setProperty("javax.net.ssl.trustStore", resource.getPath());
         System.setProperty("javax.net.ssl.trustStorePassword", "123456");
         EurekaJerseyClientImpl.EurekaJerseyClientBuilder builder = new EurekaJerseyClientImpl.EurekaJerseyClientBuilder();
-        builder.withClientName("client");
+        builder.withClientName("client-app");
         builder.withSystemSSLConfiguration();
         builder.withMaxTotalConnections(10);
         builder.withMaxConnectionsPerHost(10);
