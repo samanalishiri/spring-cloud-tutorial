@@ -1,10 +1,6 @@
 spring:
   main:
     banner-mode: 'off'
-#  security:
-#    user:
-#      name: admin
-#      password: admin
 
 server:
   port: 8761
@@ -22,7 +18,6 @@ eureka:
   instance:
     hostname: DESKTOP-1LP65UA
     home-page-url: https://${eureka.instance.hostname}:${server.port}
-    status-page-url: https://${eureka.instance.hostname}:${server.port}/admin/info
     secure-port-enabled: true
     non-secure-port-enabled: false
     secure-virtual-host-name: ${spring.application.name}
@@ -35,26 +30,3 @@ eureka:
       defaultZone: https://desktop-1lp65ua:8761/eureka/
     healthcheck:
       enabled: true
-
-
-management:
-  endpoints:
-    web:
-      base-path: /admin
-      exposure:
-        include: '*'
-    health:
-      show-details: always
-  server:
-    port: 8761
-  endpoint:
-    health:
-      enabled: true
-
-info:
-  app:
-    encoding: UTF-8
-    java:
-      source: 1:8
-      target: 1:8
-    motd: eureka server

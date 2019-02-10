@@ -6,10 +6,10 @@ spring:
       client:
         username: client
         password: client
-        url: http://localhost:8585
+        url: https://localhost:9090
 
 server:
-  port: 9091
+  port: 9092
   ssl:
     enabled: true
     key-store: classpath:client.jks
@@ -36,16 +36,20 @@ eureka:
 
 management:
   endpoints:
+    health:
+      show-details: 'always'
     web:
       base-path: /actuator
       exposure:
         include: '*'
-    health:
-      show-details: always
   server:
-    port: 9091
+    port: 9092
   endpoint:
     health:
+      enabled: true
+    env:
+      enabled: true
+    info:
       enabled: true
 
 info:
@@ -55,3 +59,9 @@ info:
       source: 1:8
       target: 1:8
     motd: hello service
+
+
+logging:
+  file: /var/log/sample-boot-application.log
+  pattern:
+    file: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx'
