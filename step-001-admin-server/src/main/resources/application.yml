@@ -1,52 +1,44 @@
 spring:
   main:
     banner-mode: 'off'
-#  security:
-#    user:
-#      name: admin
-#      password: admin
+
 
 server:
-  port: 8761
+  port: 8585
   ssl:
     enabled: true
-    key-store: classpath:eureka.jks
+    key-store: classpath:client.jks
     key-store-password: 123456
     key-password: 123456
-    trust-store: classpath:eureka.jks
+    trust-store: classpath:client.jks
     trust-store-password: 123456
-    key-alias: eureka
-    client-auth: 'want'
+    key-alias: client
 
 eureka:
   instance:
     hostname: DESKTOP-1LP65UA
     home-page-url: https://${eureka.instance.hostname}:${server.port}
-    status-page-url: https://${eureka.instance.hostname}:${server.port}/admin/info
+    status-page-url: https://${eureka.instance.hostname}:${server.port}/actuator/info
+    health-check-url: https://${eureka.instance.hostname}:${server.port}/actuator/health
     secure-port-enabled: true
     non-secure-port-enabled: false
-    secure-virtual-host-name: ${spring.application.name}
     non-secure-port: ${server.port}
-    secure-port: 443
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: https://desktop-1lp65ua:8761/eureka/
-    healthcheck:
-      enabled: true
-
+      defaultZone: https://admin:admin@desktop-1lp65ua:8761/eureka/
 
 management:
   endpoints:
     web:
-      base-path: /admin
+      base-path: /actuator
       exposure:
         include: '*'
     health:
       show-details: always
   server:
-    port: 8761
+    port: 9090
   endpoint:
     health:
       enabled: true
@@ -57,4 +49,4 @@ info:
     java:
       source: 1:8
       target: 1:8
-    motd: eureka server
+    motd: spring boot admin
