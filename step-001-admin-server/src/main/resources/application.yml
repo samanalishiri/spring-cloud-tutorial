@@ -3,10 +3,8 @@ spring:
     banner-mode: 'off'
   boot:
     admin:
-      client:
-        username: client
-        password: client
-        url: https://localhost:9090
+      routes:
+        endpoints: 'env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,hystrix.stream,turbine.stream, activiti'
 
 server:
   port: 9090
@@ -23,8 +21,8 @@ eureka:
   instance:
     hostname: DESKTOP-1LP65UA
     home-page-url: https://${eureka.instance.hostname}:${server.port}
-    status-page-url: https://${eureka.instance.hostname}:${server.port}/actuator/info
-    health-check-url: https://${eureka.instance.hostname}:${server.port}/actuator/health
+    status-page-url: https://${eureka.instance.hostname}:${server.port}
+    health-check-url: https://${eureka.instance.hostname}:${server.port}
     secure-port-enabled: true
     non-secure-port-enabled: false
     non-secure-port: ${server.port}
@@ -40,7 +38,7 @@ management:
     health:
       show-details: 'always'
     web:
-      base-path: /actuator
+      base-path: /
       exposure:
         include: '*'
   server:
