@@ -12,23 +12,14 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class HelloService {
 
-    @LoadBalanced
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
-    }
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @HystrixCommand(fallbackMethod = "helloFallBack")
-    @RequestMapping("step003/hello")
+    @HystrixCommand(fallbackMethod = "fallBack")
+    @RequestMapping("/")
     public String hello() {
         throw new RuntimeException();
     }
 
-    public String helloFallBack() {
-        return "Call helloFallBack!";
+    public String fallBack() {
+        return "Call fallBack!";
     }
 
 }
