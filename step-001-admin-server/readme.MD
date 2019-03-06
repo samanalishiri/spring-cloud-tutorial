@@ -7,15 +7,8 @@
 - locate the client.jks in the resources directory of admin-server project
 
 ### execute
-    run eureka server
-    run admin-server
-    mvn clean package spring-boot:run
+    1- run eureka server
+    2- mvn clean package spring-boot:run
 
-### actuator
-    http://localhost:9092/actuator/info
-    http://localhost:9092/actuator/health
-    http://localhost:9092/actuator/env
-
-    
-### rest
-    http://localhost:9092/
+### web console
+    https://localhost:9090/

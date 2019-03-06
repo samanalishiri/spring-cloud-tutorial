@@ -14,8 +14,3 @@
 ### actuator
     http://localhost:9092/actuator/info
     http://localhost:9092/actuator/health
-    http://localhost:9092/actuator/env
-
-    
-### rest
-    http://localhost:9092/
