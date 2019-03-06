@@ -1,8 +1,8 @@
 keytool -delete -alias eureka -keystore %JAVA_HOME%/jre/lib/security/cacerts -storepass changeit
 keytool -delete -alias client -keystore %JAVA_HOME%/jre/lib/security/cacerts -storepass changeit
 
-keytool -genkey -alias eureka -keyalg RSA -keystore eureka.jks -dname "CN=Saman Alishiri, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -ext "SAN:c=DNS:DESKTOP-1LP65UA,IP:127.0.0.1" -storepass 123456 -keypass 123456
-keytool -genkey -alias client -keyalg RSA -keystore client.jks -dname "CN=client-app, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -ext "SAN:c=DNS:DESKTOP-1LP65UA,IP:127.0.0.1" -storepass 123456 -keypass 123456
+keytool -genkey -alias eureka -keyalg RSA -keystore eureka.jks -dname "CN=Saman Alishiri, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -ext "SAN:c=DNS:GF-35436,IP:127.0.0.1" -storepass 123456 -keypass 123456
+keytool -genkey -alias client -keyalg RSA -keystore client.jks -dname "CN=client-app, OU=spring-cloud, O=tutorial, L=Tehran, S=Tehran, C=IR" -ext "SAN:c=DNS:GF-35436,IP:127.0.0.1" -storepass 123456 -keypass 123456
 
 keytool -export -alias eureka -file eureka.crt -keystore eureka.jks -storepass 123456
 keytool -export -alias client -file client.crt -keystore client.jks -storepass 123456

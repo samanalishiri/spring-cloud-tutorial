@@ -19,7 +19,7 @@ server:
 
 eureka:
   instance:
-    hostname: DESKTOP-1LP65UA
+    hostname: GF-35436
     home-page-url: https://${eureka.instance.hostname}:${server.port}
     status-page-url: https://${eureka.instance.hostname}:${server.port}
     health-check-url: https://${eureka.instance.hostname}:${server.port}
@@ -30,7 +30,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: https://admin:admin@desktop-1lp65ua:8761/eureka/
+      defaultZone: https://admin:admin@gf-35436:8761/eureka/
 
 
 management:
@@ -42,7 +42,7 @@ management:
       exposure:
         include: '*'
   server:
-    port: 9091
+    port: 9090
   endpoint:
     health:
       enabled: true

@@ -16,7 +16,7 @@ server:
 
 eureka:
   instance:
-    hostname: DESKTOP-1LP65UA
+    hostname: GF-35436
     home-page-url: https://${eureka.instance.hostname}:${server.port}
     secure-port-enabled: true
     non-secure-port-enabled: false
@@ -27,6 +27,6 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: https://desktop-1lp65ua:8761/eureka/
+      defaultZone: https://gf-35436:8761/eureka/
     healthcheck:
       enabled: true

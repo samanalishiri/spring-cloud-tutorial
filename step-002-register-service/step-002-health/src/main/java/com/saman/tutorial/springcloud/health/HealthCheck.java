@@ -20,7 +20,7 @@ public class HealthCheck implements HealthIndicator {
     }
 
     private boolean isFailed() {
-        return errorCode > 4 && errorCode < 8;
+        return errorCode > 5 && errorCode < 15;
     }
 
     private Health up() {

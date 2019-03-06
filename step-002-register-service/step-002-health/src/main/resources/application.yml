@@ -9,7 +9,7 @@ spring:
         url: https://localhost:9090
 
 server:
-  port: 9092
+  port: 9091
   ssl:
     enabled: true
     key-store: classpath:client.jks
@@ -22,7 +22,7 @@ server:
 eureka:
   instance:
     hostname: GF-35436
-    home-page-url: https://${eureka.instance.hostname}:${server.port}
+    home-page-url: https://${eureka.instance.hostname}:${server.port}/actuator/health
     status-page-url: https://${eureka.instance.hostname}:${server.port}/actuator/info
     health-check-url: https://${eureka.instance.hostname}:${server.port}/actuator/health
     secure-port-enabled: true
@@ -43,7 +43,7 @@ management:
       exposure:
         include: '*'
   server:
-    port: 9092
+    port: 9091
   endpoint:
     health:
       enabled: true
@@ -58,7 +58,7 @@ info:
     java:
       source: 1:8
       target: 1:8
-    motd: hello service
+    motd: health check
 
 
 logging:
