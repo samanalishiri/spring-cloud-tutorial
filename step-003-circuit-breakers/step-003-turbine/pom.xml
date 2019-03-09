@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Circuit Breakers :: Turbine</name>
+    <name>Turbine</name>
     <dependencyManagement>
         <dependencies>
             <dependency>

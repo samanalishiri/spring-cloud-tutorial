@@ -14,7 +14,7 @@ public class HelloService {
 
     @HystrixCommand(fallbackMethod = "fallBack")
     @RequestMapping("/")
-    public String hello() {
+    public String testFallBack() {
         throw new RuntimeException();
     }
 
