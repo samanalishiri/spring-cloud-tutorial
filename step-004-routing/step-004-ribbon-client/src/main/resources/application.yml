@@ -9,7 +9,7 @@ spring:
         url: https://localhost:9090
 
 server:
-  port: 9092
+  port: 9098
   ssl:
     enabled: true
     key-store: classpath:client.jks
@@ -34,6 +34,13 @@ eureka:
     serviceUrl:
       defaultZone: https://admin:admin@gf-35436:8761/eureka/
 
+ping-server:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:9092,localhost:9192
+    ServerListRefreshInterval: 15000
+
 management:
   endpoints:
     health:
@@ -43,7 +50,7 @@ management:
       exposure:
         include: '*'
   server:
-    port: 9092
+    port: 9098
   endpoint:
     health:
       enabled: true
@@ -58,7 +65,7 @@ info:
     java:
       source: 1:8
       target: 1:8
-    motd: hello-service
+    motd: ribbon
 
 
 logging:

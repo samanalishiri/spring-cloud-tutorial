@@ -9,7 +9,7 @@ spring:
         url: https://localhost:9090
 
 server:
-  port: 9092
+  port: 9192
   ssl:
     enabled: true
     key-store: classpath:client.jks
@@ -43,7 +43,7 @@ management:
       exposure:
         include: '*'
   server:
-    port: 9092
+    port: 9192
   endpoint:
     health:
       enabled: true
