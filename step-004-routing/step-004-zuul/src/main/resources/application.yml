@@ -3,11 +3,13 @@ spring:
     banner-mode: 'off'
   boot:
     admin:
-      routes:
-        endpoints: 'env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,hystrix.stream,turbine.stream, activiti'
+      client:
+        username: client
+        password: client
+        url: https://localhost:9090
 
 server:
-  port: 9090
+  port: 9099
   ssl:
     enabled: true
     key-store: classpath:client.jks
@@ -32,6 +34,18 @@ eureka:
     serviceUrl:
       defaultZone: https://admin:admin@gf-35436:8761/eureka/
 
+zuul:
+  routes:
+    helloservice:
+      path: /**
+      serviceId: 'hello-service'
+      url: 'https://gf-35436:9092/'
+      stripPrefix: false
+    health:
+      path: /**
+      serviceId: 'health'
+      url: 'https://gf-35436:9091/'
+      stripPrefix: false
 
 management:
   endpoints:
@@ -42,7 +56,7 @@ management:
       exposure:
         include: '*'
   server:
-    port: 9090
+    port: 9099
   endpoint:
     health:
       enabled: true
@@ -57,4 +71,10 @@ info:
     java:
       source: 1:8
       target: 1:8
-    motd: admin-server
+    motd: zuul
+
+
+logging:
+  file: /var/log/sample-boot-application.log
+  pattern:
+    file: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx'
